@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Hub;
+use App\ValueObjects\NexusName;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn() => view('hello'))->name('home');
-Route::get('/hello', fn() => view('second'))->name('second');
+//Route::get('/', fn() => view('hello'))->name('home');
+//Route::get('/hello', fn() => view('second'))->name('second');
+//
+//Route::get('/foo', function (){
+//    $hub = new Hub();
+//    $hub->name = new NexusName('test');
+//    $hub->description = new NexusName('test');
+//
+//    $hub->save();
+//});
