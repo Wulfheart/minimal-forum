@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Event;
 
 class Channel extends Model
 {
@@ -45,7 +46,7 @@ class Channel extends Model
         $post->topic_id = $topic->id;
         $post->save();
 
-        Bus::dispatch(new TopicCreatedEvent($topic->id, $user->id));
+        Event::dispatch(new TopicCreatedEvent($topic->id, $user->id));
 
         return $topic;
     }

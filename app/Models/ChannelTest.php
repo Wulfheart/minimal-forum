@@ -8,6 +8,7 @@ use App\Events\TopicCreatedEvent;
 use App\ValueObjects\NexusName;
 use App\ValueObjects\PostText;
 use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Event;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\TestCase;
 
@@ -16,7 +17,7 @@ final class ChannelTest extends TestCase
 {
     public function test_createTopic(): void
     {
-        Bus::fake();
+        Event::fake();
         $channel = Channel::factory()->create();
         $user = User::factory()->create();
 
@@ -29,6 +30,6 @@ final class ChannelTest extends TestCase
 
         $this->assertEquals(1, $topic->posts_count);
 
-        Bus::assertDispatched(TopicCreatedEvent::class);
+        Event::assertDispatched(TopicCreatedEvent::class);
     }
 }
