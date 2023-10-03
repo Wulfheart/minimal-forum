@@ -9,9 +9,9 @@ use InvalidArgumentException;
 
 class NexusNameCast implements CastsAttributes
 {
-    public function get(Model $model, string $key, mixed $value, array $attributes): NexusNameCast
+    public function get(Model $model, string $key, mixed $value, array $attributes): NexusName
     {
-        return new self($value);
+        return new NexusName($value);
     }
 
     public function set(Model $model, string $key, mixed $value, array $attributes): string

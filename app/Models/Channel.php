@@ -4,12 +4,14 @@ namespace App\Models;
 
 use App\Casts\NexusDescriptionCast;
 use App\Casts\NexusNameCast;
+use App\Events\TopicCreatedEvent;
 use App\ValueObjects\NexusName;
 use App\ValueObjects\PostText;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Bus;
 
 class Channel extends Model
 {
@@ -34,10 +36,17 @@ class Channel extends Model
     {
         $topic = new Topic();
         $topic->title = $title;
+        $topic->channel_id = $this->id;
+        $topic->save();
 
         $post = new Post();
         $post->content = $postText;
-        $post->
-        $topic->posts->add()
+        $post->user_id = $user->id;
+        $post->topic_id = $topic->id;
+        $post->save();
+
+        Bus::dispatch(new TopicCreatedEvent($topic->id, $user->id));
+
+        return $topic;
     }
 }

@@ -20,7 +20,7 @@ class HubFactory extends Factory
     {
         return [
             'name' => NexusName::fromString($this->faker->name),
-            'description' => new NexusDescription($this->faker->boolean ? $this->faker->sentence : null),
+            'description' => NexusDescription::empty(),
         ];
     }
 

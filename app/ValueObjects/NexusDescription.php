@@ -17,7 +17,13 @@ final readonly class NexusDescription
         return new self($content);
     }
 
-    public function __toString(): string {
+    public static function empty(): self
+    {
+        return new self(null);
+    }
+
+    public function value(): ?string
+    {
         return $this->content;
     }
 

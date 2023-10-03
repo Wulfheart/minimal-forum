@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use App\Casts\NexusNameCast;
 use App\ValueObjects\NexusName;
 use App\ValueObjects\PostText;
+use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Topic extends Model
 {
+    /** @var array<string, class-string<CastsAttributes>  */
     protected $casts = [
-        'title' => NexusName::class,
+        'title' => NexusNameCast::class,
     ];
 
     public function channel(): BelongsTo
