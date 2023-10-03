@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Casts\NexusNameCast;
-use App\ValueObjects\NexusName;
 use App\ValueObjects\PostText;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;

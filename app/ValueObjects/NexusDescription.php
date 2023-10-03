@@ -8,8 +8,7 @@ final readonly class NexusDescription
 {
     public function __construct(
         private ?string $content
-    )
-    {
+    ) {
     }
 
     public static function fromString(string $content): self

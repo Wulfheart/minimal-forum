@@ -7,7 +7,6 @@ namespace App\Models;
 use App\Events\TopicCreatedEvent;
 use App\ValueObjects\NexusName;
 use App\ValueObjects\PostText;
-use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Event;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tests\TestCase;

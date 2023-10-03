@@ -10,9 +10,8 @@ final readonly class PostText
 {
     public function __construct(
         private string $content
-    )
-    {
-        if($this->content === ''){
+    ) {
+        if($this->content === '') {
             throw new InvalidArgumentException("The content cannot be empty");
         }
     }
@@ -22,7 +21,8 @@ final readonly class PostText
         return new self($content);
     }
 
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return $this->content;
     }
 }

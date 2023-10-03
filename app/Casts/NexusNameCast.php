@@ -16,7 +16,7 @@ class NexusNameCast implements CastsAttributes
 
     public function set(Model $model, string $key, mixed $value, array $attributes): string
     {
-        if(! $value instanceof NexusName){
+        if(! $value instanceof NexusName) {
             throw new InvalidArgumentException("The value must be an instance of " . self::class);
         }
         return (string) $value;
