@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Event;
 
 class Topic extends Model
@@ -32,7 +33,15 @@ class Topic extends Model
      */
     public function posts(): HasMany
     {
-        return $this->hasMany(Post::class)->orderByDesc('created_at');
+        return $this->hasMany(Post::class)->orderBy('created_at');
+    }
+
+    /**
+     * @return HasOne<Post>
+     */
+    public function latestPost(): HasOne
+    {
+        return $this->hasOne(Post::class)->ofMany('created_at', 'max');
     }
 
     public function comment(User $user, PostText $text): Post

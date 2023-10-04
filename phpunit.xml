@@ -3,6 +3,9 @@
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
+         failOnRisky="true"
+         failOnWarning="true"
+         requireCoverageMetadata="true"
 >
     <testsuites>
         <testsuite name="Feature">
@@ -15,8 +18,18 @@
         </include>
         <exclude>
             <directory suffix="Test.php">app</directory>
+            <directory>app/Http/Middleware</directory>
+            <file>app/Console/Kernel.php</file>
+            <file>app/Exceptions/Handler.php</file>
+            <directory>app/Providers</directory>
         </exclude>
     </source>
+    <coverage>
+        <report>
+            <html outputDirectory="build/coverage"/>
+        </report>
+
+    </coverage>
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>

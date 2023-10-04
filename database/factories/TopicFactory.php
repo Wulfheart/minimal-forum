@@ -10,6 +10,9 @@ use App\ValueObjects\NexusName;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
+/**
+ * @extends Factory<Topic>
+ */
 class TopicFactory extends Factory
 {
     protected $model = Topic::class;

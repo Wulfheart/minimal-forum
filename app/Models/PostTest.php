@@ -10,5 +10,4 @@ use Tests\TestCase;
 #[CoversClass(Post::class)]
 final class PostTest extends TestCase
 {
-
 }
