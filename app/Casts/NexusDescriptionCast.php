@@ -7,11 +7,14 @@ use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 
-class NexusDescriptionCast implements CastsAttributes
+/**
+ * @implements CastsAttributes<NexusDescription, NexusDescription>
+ */
+final class NexusDescriptionCast implements CastsAttributes
 {
-    public function get(Model $model, string $key, mixed $value, array $attributes)
+    public function get(Model $model, string $key, mixed $value, array $attributes): NexusDescription
     {
-        return new self($value);
+        return new NexusDescription($value);
     }
 
     public function set(Model $model, string $key, mixed $value, array $attributes)

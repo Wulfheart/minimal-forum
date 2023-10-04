@@ -4,23 +4,27 @@ namespace App\Models;
 
 use App\Casts\NexusNameCast;
 use App\ValueObjects\PostText;
-use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Topic extends Model
 {
-    /** @var array<string, class-string<CastsAttributes>  */
     protected $casts = [
         'title' => NexusNameCast::class,
     ];
 
+    /**
+     * @return BelongsTo<Channel, Topic>
+     */
     public function channel(): BelongsTo
     {
         return $this->belongsTo(Channel::class);
     }
 
+    /**
+     * @return HasMany<Post>
+     */
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class)->orderByDesc('created_at');

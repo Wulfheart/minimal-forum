@@ -17,6 +17,9 @@ class Hub extends Model
         'description' => NexusDescriptionCast::class,
     ];
 
+    /**
+     * @return HasMany<Channel>
+     */
     public function channels(): HasMany
     {
         return $this->hasMany(Channel::class);

@@ -22,11 +22,17 @@ class Channel extends Model
         'description' => NexusDescriptionCast::class,
     ];
 
+    /**
+     * @return BelongsTo<Hub, Channel>
+     */
     public function hub(): BelongsTo
     {
         return $this->belongsTo(Hub::class);
     }
 
+    /**
+     * @return HasMany<Topic>
+     */
     public function topics(): HasMany
     {
         return $this->hasMany(Topic::class);
