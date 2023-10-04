@@ -3,13 +3,18 @@
 namespace App\Models;
 
 use App\Casts\NexusNameCast;
+use App\Events\PostCreatedEvent;
 use App\ValueObjects\PostText;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Event;
 
 class Topic extends Model
 {
+    use HasFactory;
+
     protected $casts = [
         'title' => NexusNameCast::class,
     ];
@@ -32,9 +37,14 @@ class Topic extends Model
 
     public function comment(User $user, PostText $text): Post
     {
-        return $this->posts()->create([
-            'user_id' => $user->id,
-            'text' => $text,
-        ]);
+        $post = new Post();
+        $post->content = $text;
+        $post->user_id = $user->id;
+        $post->topic_id = $this->id;
+        $post->save();
+
+        Event::dispatch(new PostCreatedEvent($post->id, $user->id));
+
+        return $post;
     }
 }
