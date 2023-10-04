@@ -31,7 +31,8 @@ final class PostTextCastTest extends TestCase
     {
         $cast = new PostTextCast();
         $model = new class() extends Model {
-        };        $key = 'text';
+        };
+        $key = 'text';
         $value = 'This is not a PostText';
 
         $this->expectException(InvalidArgumentException::class);
@@ -44,7 +45,8 @@ final class PostTextCastTest extends TestCase
     {
         $cast = new PostTextCast();
         $model = new class() extends Model {
-        };        $key = 'text';
+        };
+        $key = 'text';
         $postText = new PostText('Valid PostText');
 
         $result = $cast->set($model, $key, $postText, []);

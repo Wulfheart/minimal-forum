@@ -16,7 +16,7 @@ final class NexusNameCastTest extends TestCase
     public function test_get_returns_nexus_name_instance(): void
     {
         $cast = new NexusNameCast();
-        $model = new class() extends Model{};
+        $model = new class() extends Model {};
         $key = 'name';
         $value = 'John Doe';
 
@@ -29,7 +29,7 @@ final class NexusNameCastTest extends TestCase
     public function test_set_throws_exception_if_value_is_not_nexus_name(): void
     {
         $cast = new NexusNameCast();
-        $model = new class() extends Model{};
+        $model = new class() extends Model {};
         $key = 'name';
         $value = 'This is not a NexusName';
 
@@ -42,7 +42,7 @@ final class NexusNameCastTest extends TestCase
     public function test_set_returns_nexus_name_as_string(): void
     {
         $cast = new NexusNameCast();
-        $model = new class() extends Model{};
+        $model = new class() extends Model {};
         $key = 'name';
         $nexusName = new NexusName('Valid NexusName');
 
