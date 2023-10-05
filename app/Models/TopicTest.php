@@ -108,4 +108,14 @@ final class TopicTest extends TestCase
 
         $this->assertTrue($topic->latestPost->created_at->equalTo($latestDate));
     }
+
+    public function test_channel_relation(): void
+    {
+        $channel = Channel::factory()->create();
+        $topic = Topic::factory()->forChannel($channel)->create();
+
+        $topic->load('channel');
+
+        $this->assertEloquentModelEquals($channel, $topic->channel);
+    }
 }

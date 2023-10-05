@@ -27,4 +27,11 @@ class TopicFactory extends Factory
             'channel_id' => Channel::factory(),
         ];
     }
+
+    public function forChannel(Channel $channel): self
+    {
+        return $this->state(fn(array $attributes) => [
+            'channel_id' => $channel->id,
+        ]);
+    }
 }

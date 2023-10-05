@@ -26,4 +26,11 @@ class ChannelFactory extends Factory
             'description' => NexusDescription::empty(),
         ];
     }
+
+    public function forHub(Hub $hub): self
+    {
+        return $this->state(fn(array $attributes) => [
+            'hub_id' => $hub->id,
+        ]);
+    }
 }

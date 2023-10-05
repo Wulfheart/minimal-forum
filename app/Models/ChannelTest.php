@@ -31,4 +31,25 @@ final class ChannelTest extends TestCase
 
         Event::assertDispatched(TopicCreatedEvent::class);
     }
+
+    public function test_hub_relation(): void
+    {
+        $hub = Hub::factory()->create();
+
+        $channel = Channel::factory()->forHub($hub)->create();
+
+        $channel->load('hub');
+
+        $this->assertEloquentModelEquals($hub, $channel->hub);
+    }
+
+    public function test_topics_relation(): void
+    {
+        $channel = Channel::factory()->create();
+        Topic::factory()->forChannel($channel)->count(2)->create();
+
+        $channel->loadCount('topics');
+
+        $this->assertEquals(2, $channel->topics_count);
+    }
 }
