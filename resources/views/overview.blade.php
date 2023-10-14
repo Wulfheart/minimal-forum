@@ -36,7 +36,7 @@
             </tbody>
 
         </table>
-        <a href="{{ route('channel') }}" wire:navigate>Channel</a>
+        <a href="{{ route('channel') }}">Channel</a>
     </main>
 
 </x-layouts.app>

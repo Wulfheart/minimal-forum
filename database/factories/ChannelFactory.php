@@ -23,6 +23,7 @@ class ChannelFactory extends Factory
         return [
             'name' => NexusName::fromString($this->faker->name),
             'description' => NexusDescription::empty(),
+            'hub_id' => Hub::factory(),
         ];
     }
 

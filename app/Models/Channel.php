@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Support\Facades\Event;
 
 class Channel extends Model
@@ -36,6 +38,22 @@ class Channel extends Model
     public function topics(): HasMany
     {
         return $this->hasMany(Topic::class);
+    }
+
+    /**
+     * @return HasManyThrough<Post>
+     */
+    public function posts(): HasManyThrough
+    {
+        return $this->hasManyThrough(Post::class, Topic::class);
+    }
+
+    /**
+     * @return HasOneThrough<Post>
+     */
+    public function latestPost(): HasOneThrough
+    {
+        return $this->hasOneThrough(Post::class, Topic::class)->latest('posts.created_at');
     }
 
     public function createTopic(NexusName $title, PostText $postText, User $user): Topic

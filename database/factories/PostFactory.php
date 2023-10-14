@@ -24,8 +24,8 @@ class PostFactory extends Factory
         $text = $this->faker->paragraphs($this->faker->numberBetween(1, 5), true);
         return [
             'content' => PostText::fromString($text),
-            'user_id' => User::factory()->create()->id,
-            'topic_id' => Topic::factory()->create()->id,
+            'user_id' => User::factory(),
+            'topic_id' => Topic::factory(),
         ];
     }
 

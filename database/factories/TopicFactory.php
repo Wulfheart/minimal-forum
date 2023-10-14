@@ -23,7 +23,6 @@ class TopicFactory extends Factory
             'title' => NexusName::fromString($this->faker->word()),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-
             'channel_id' => Channel::factory(),
         ];
     }

@@ -26,5 +26,10 @@ final readonly class NexusName
         return $this->content;
     }
 
+    public function string(): string
+    {
+        return (string) $this;
+    }
+
 
 }
