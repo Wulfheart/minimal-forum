@@ -21,6 +21,7 @@ class HubFactory extends Factory
         return [
             'name' => NexusName::fromString($this->faker->name),
             'description' => NexusDescription::empty(),
+            'order' => $this->faker->unique()->numberBetween(1, 100),
         ];
     }
 

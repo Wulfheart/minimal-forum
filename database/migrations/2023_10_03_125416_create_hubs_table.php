@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('hubs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('order');
             $table->string('description')->nullable();
             $table->timestamps();
+
+            $table->unique('order');
         });
     }
 

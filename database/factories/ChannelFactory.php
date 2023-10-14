@@ -21,7 +21,6 @@ class ChannelFactory extends Factory
     public function definition(): array
     {
         return [
-            'hub_id' => Hub::factory()->create()->id,
             'name' => NexusName::fromString($this->faker->name),
             'description' => NexusDescription::empty(),
         ];

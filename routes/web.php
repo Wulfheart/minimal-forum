@@ -1,9 +1,7 @@
 <?php
 
+use App\Http\Controllers\OverviewController;
 use App\Livewire\Channel;
-use App\Livewire\Overview;
-use App\Models\Hub;
-use App\ValueObjects\NexusName;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Overview::class)->name('overview');
-Route::get('/channel', Channel::class)->name('channel');
+Route::get('/', OverviewController::class)->name('overview');
+//Route::get('/channel', Channel::class)->name('channel');
