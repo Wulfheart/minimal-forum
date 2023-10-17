@@ -15,6 +15,9 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Support\Facades\Event;
 
+/**
+ * @property-read Post $latestPost
+ */
 class Channel extends Model
 {
     use HasFactory;

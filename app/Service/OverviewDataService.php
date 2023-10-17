@@ -10,7 +10,7 @@ use App\ViewData\Overview\Channel as ChannelViewData;
 use App\ViewData\Overview\Hub as HubViewData;
 use App\ViewData\Overview\OverviewViewData;
 use App\ViewData\Overview\PostPreview;
-use Exception;
+use App\ViewData\Shared\Author;
 
 final class OverviewDataService
 {
@@ -22,17 +22,22 @@ final class OverviewDataService
         ]])->withCount('channels.topics', 'channels.posts')->get();
 
         foreach ($hubs as $hub) {
+
             $channels = $hub->channels->map(function ($channel) {
+                $postPreview = new PostPreview(
+                    route('overview'),
+                    $channel->latestPost->topic->title->string(),
+                    new Author(
+                    $channel->latestPost->user->name,
+                        ''
+                    ),
+                    $channel->latestPost->created_at->dayName
+                );
                 return new ChannelViewData(
                     (string) $channel->name,
                     $channel->description?->value(),
                     route('channel', $channel->id),
-                    new PostPreview(
-                        route('overview'),
-                        $channel->latestPost->topic->title->string() ?? throw new Exception('No topic title'),
-                        $channel->latestPost->user->name,
-                        $channel->latestPost->created_at
-                    ),
+                    $postPreview,
                     $channel->topics_count,
                     $channel->posts_count,
                 );
@@ -40,7 +45,7 @@ final class OverviewDataService
 
             $hubViewData[] = new HubViewData(
                 (string) $hub->name,
-                (string) $hub->description,
+                 $hub->description->value(),
                 $channels,
             );
 

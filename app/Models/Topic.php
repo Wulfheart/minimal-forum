@@ -56,4 +56,6 @@ class Topic extends Model
 
         return $post;
     }
+
+
 }
