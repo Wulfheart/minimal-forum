@@ -7,6 +7,7 @@ use App\Casts\NexusNameCast;
 use App\Events\TopicCreatedEvent;
 use App\ValueObjects\NexusName;
 use App\ValueObjects\PostText;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -56,7 +57,7 @@ class Channel extends Model
      */
     public function latestPost(): HasOneThrough
     {
-        return $this->hasOneThrough(Post::class, Topic::class)->latest('posts.created_at');
+        return $this->hasOneThrough(Post::class, Topic::class)->latest('posts.posted_at');
     }
 
     public function createTopic(NexusName $title, PostText $postText, User $user): Topic
@@ -70,6 +71,7 @@ class Channel extends Model
         $post->content = $postText;
         $post->user_id = $user->id;
         $post->topic_id = $topic->id;
+        $post->posted_at = Carbon::now();
         $post->save();
 
         Event::dispatch(new TopicCreatedEvent($topic->id, $user->id));

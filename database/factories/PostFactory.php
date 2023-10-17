@@ -26,6 +26,7 @@ class PostFactory extends Factory
             'content' => PostText::fromString($text),
             'user_id' => User::factory(),
             'topic_id' => Topic::factory(),
+            'posted_at' => $this->faker->dateTimeBetween(CarbonImmutable::now()->subDays(10)),
         ];
     }
 

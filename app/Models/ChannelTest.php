@@ -90,8 +90,8 @@ final class ChannelTest extends TestCase
     {
         $channel = Channel::factory()->create();
         $topic = Topic::factory()->forChannel($channel)->create();
-        $post = Post::factory()->forTopic($topic)->create(['created_at' => now()->subDay()]);
-        Post::factory()->forTopic($topic)->create(['created_at' => now()->subDays(2)]);
+        $post = Post::factory()->forTopic($topic)->create(['posted_at' => now()->subDay()]);
+        Post::factory()->forTopic($topic)->create(['posted_at' => now()->subDays(2)]);
 
 
         $channel->load('latestPost');
@@ -102,8 +102,8 @@ final class ChannelTest extends TestCase
     {
         $channel = Channel::factory()->create();
         $topic = Topic::factory()->forChannel($channel)->create();
-        Post::factory()->forTopic($topic)->create(['created_at' => now()->subDays(3)]);
-        $post = Post::factory()->forTopic($topic)->create(['created_at' => now()->subDays(2)]);
+        Post::factory()->forTopic($topic)->create(['posted_at' => now()->subDays(3)]);
+        $post = Post::factory()->forTopic($topic)->create(['posted_at' => now()->subDays(2)]);
 
 
         $channel->load('latestPost');

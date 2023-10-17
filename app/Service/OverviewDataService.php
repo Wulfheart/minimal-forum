@@ -21,6 +21,8 @@ final class OverviewDataService
             'topic',
         ]])->withCount('channels.topics', 'channels.posts')->get();
 
+        $hubViewData = [];
+
         foreach ($hubs as $hub) {
 
             $channels = $hub->channels->map(function ($channel) {
@@ -28,10 +30,10 @@ final class OverviewDataService
                     route('overview'),
                     $channel->latestPost->topic->title->string(),
                     new Author(
-                    $channel->latestPost->user->name,
+                        $channel->latestPost->user->name,
                         ''
                     ),
-                    $channel->latestPost->created_at->dayName
+                    $channel->latestPost->posted_at->format('Y-m-d'),
                 );
                 return new ChannelViewData(
                     (string) $channel->name,
@@ -45,7 +47,7 @@ final class OverviewDataService
 
             $hubViewData[] = new HubViewData(
                 (string) $hub->name,
-                 $hub->description->value(),
+                $hub->description?->value(),
                 $channels,
             );
 

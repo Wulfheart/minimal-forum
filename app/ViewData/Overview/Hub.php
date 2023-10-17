@@ -8,7 +8,7 @@ final class Hub
 {
     public function __construct(
         public string $title,
-        public string $description,
+        public ?string $description,
         /** @var array<Channel> $channels */
         public array $channels,
     ) {

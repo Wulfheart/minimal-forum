@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property-read \App\Models\Topic $topic
- * @property-read \App\Models\User $user
+* @property-read Topic $topic
+ * @property-read User $user
  */
 class Post extends Model
 {
@@ -18,6 +18,7 @@ class Post extends Model
 
     protected $casts = [
         'content' => PostTextCast::class,
+        'posted_at' => 'datetime'
     ];
 
     /**
