@@ -57,4 +57,9 @@ final class OverviewDataService
 
     }
 
+    public function getOverviewDataForGuest(): OverviewViewData
+    {
+
+    }
+
 }
