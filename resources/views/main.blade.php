@@ -14,10 +14,10 @@
 <body class="">
 
     <div class="h-24"></div>
-    <x-container>
-        <div class="w-full flex">
+    <x-container class="@container">
+        <div class="w-full flex @container flex-col @2xl:flex-row">
             <!-- Sidebar -->
-            <div class="w-52 mr-12">
+            <div class="mb-12 @2xl:mb-0 @xl:w-52 @2xl:mr-12">
                 <div class="w-full mb-5">
                     <button
                         class="bg-primary hover:bg-primary-dark text-white text-sm font-bold py-2 px-5 text-center align-middle rounded truncate w-full">
@@ -99,6 +99,7 @@
                 </div>
 
                 <ul class="w-full list-none">
+                    <livewire:discussion-overview></livewire:discussion-overview>
                     <li class="flex flex-row items-center hover:bg-gray-100 py-3 px-3 rounded -mx-3">
                         <a href="#" class="mr-4">
                             <div>
