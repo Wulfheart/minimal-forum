@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body hx-boost="true">
+<body hx-boost="true" class="text-gray-900">
     <header>
         <nav>
             <a href="{{ route('overview') }}">home</a>
