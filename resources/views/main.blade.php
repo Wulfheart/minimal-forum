@@ -89,7 +89,7 @@
             </div>
             <!-- Main -->
             <div class="flex-grow">
-                <div class="w-full flex flex-row justify-between mb-4">
+                <div class="w-full flex flex-row justify-between mb-4 bg-[--bg-active]">
                     <x-pages.main.sort-dropdown title="Neueste">
                         <x-pages.main.sort-dropdown.item text="Neueste" />
                         <x-pages.main.sort-dropdown.item active text="Beliebteste" />
