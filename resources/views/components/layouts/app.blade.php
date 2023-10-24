@@ -11,7 +11,6 @@
 </head>
 
 <body class="{{ app()->isLocal() ? 'debug-screens' : '' }} text-gray-900">
-    <header></header>
     {{ $slot }}
 </body>
 

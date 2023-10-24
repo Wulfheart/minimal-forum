@@ -1,5 +1,5 @@
 let colors = require('tailwindcss/colors')
-let scale = require('tailwindcss/defaultTheme')
+let defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -18,7 +18,8 @@ export default {
             boxShadow: {
                 'default': '0 2px 6px rgba(0,0,0,0.35)'
             },
-            minWidth: scale.width
+            minWidth: defaultTheme.width,
+            minHeight: defaultTheme.height,
         },
     },
     plugins: [

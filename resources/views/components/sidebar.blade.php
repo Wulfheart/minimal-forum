@@ -1,14 +1,14 @@
-@props(['sidebar'])
+@props(['sidebar', 'suppressStartDiscussionButton' => false, 'suppressFollowButton' => false])
 
-<div class="mb-12 w-full md:mb-0 md:mr-12 md:w-52">
-    @if ($sidebar->showStartDiscussionButton)
+<div {{ $attributes->class('mb-12 w-full md:mb-0 md:mr-12 md:w-52') }}>
+    @if ($sidebar->showStartDiscussionButton && !$suppressStartDiscussionButton)
         <div class="mb-5 w-full">
             <x-button class="w-full bg-primary font-bold text-primary-contrast hover:bg-primary-dark">
                 Diskussion starten
             </x-button>
         </div>
     @endif
-    @if ($sidebar->showFollowButton)
+    @if ($sidebar->showFollowButton && !$suppressFollowButton)
         <div class="mb-2.5 w-full">
             <x-button class="w-full">
                 <i class="far fa-eye pr-2"></i>

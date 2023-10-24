@@ -1,8 +1,12 @@
 <x-layouts.app>
-    <x-container class="pt-10">
+    <x-nav>
+        <x-slot:sidebar><x-sidebar :sidebar="$sidebar" suppress-follow-button
+                suppress-start-discussion-button></x-sidebar></x-slot:sidebar>
+    </x-nav>
+    <x-container class="pt-2">
         <div class="flex w-full flex-col md:flex-row">
             <!-- Sidebar -->
-            <x-sidebar :sidebar="$sidebar"></x-sidebar>
+            <x-sidebar :sidebar="$sidebar" class="hidden md:block"></x-sidebar>
             <!-- Main -->
             <div class="flex-grow">
                 <div class="mb-4 flex w-full flex-row justify-between">

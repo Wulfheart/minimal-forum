@@ -42,6 +42,12 @@ class OverviewController extends Controller
                     '#',
                     false,
                     'far fa-eye'
+                ),
+                new Item(
+                    'Ungelesene Diskussionen',
+                    '#',
+                    false,
+                    'far fa-comment'
                 )
             ],
             [
