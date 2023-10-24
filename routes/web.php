@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\OverviewController;
+use App\Livewire\One;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', OverviewController::class)->name('overview');
 //Route::get('/channel', ChannelController::class)->name('channel');
+
+Route::get('/one', One::class)->name('one');
+Route::get('/two', \App\Livewire\Two::class)->name('two');
