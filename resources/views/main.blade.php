@@ -19,8 +19,9 @@
                 </div>
 
                 <ul class="w-full list-none">
-                    <livewire:discussion-list-item></livewire:discussion-list-item>
-                    <livewire:discussion-list-item></livewire:discussion-list-item>
+                    @foreach ($items as $item)
+                        <livewire:discussion-list-item :item="$item"></livewire:discussion-list-item>
+                    @endforeach
                     <li class="-mx-3 flex flex-row items-center rounded px-3 py-3 hover:bg-gray-100">
                         <a href="#" class="mr-4">
                             <div>

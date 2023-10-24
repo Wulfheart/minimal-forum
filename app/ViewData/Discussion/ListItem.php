@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\ViewData\Discussion;
 
-use App\ViewData\Shared\Color;
 use App\ViewData\Structure\ChannelPill;
 use Livewire\Wireable;
 
@@ -20,10 +19,12 @@ final class ListItem implements Wireable
         public bool $lastPostIsResponse,
         public int $responseCount,
         public bool $isUnread,
-    )
-    {
+    ) {
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toLivewire(): array
     {
         return [

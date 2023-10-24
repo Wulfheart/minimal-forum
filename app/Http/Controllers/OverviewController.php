@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Livewire\DiscussionListItem;
 use App\Service\OverviewDataService;
+use App\ViewData\Discussion\ListItem;
 use App\ViewData\Shared\Color;
 use App\ViewData\Structure\Channel;
+use App\ViewData\Structure\ChannelPill;
 use App\ViewData\Structure\Hub;
 use App\ViewData\Structure\Item;
 use App\ViewData\Structure\Navigation;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -27,8 +31,6 @@ class OverviewController extends Controller
      */
     public function __invoke(Request $request): ApplicationContract|Factory|View|Application
     {
-        //        $data = $this->viewDataService->getOverviewDataForUser($request->user());
-
         $sidebar = new Navigation(
             [
                 new Item(
@@ -115,8 +117,70 @@ class OverviewController extends Controller
             false
         );
 
+        $faker = \Faker\Factory::create();
+
+        $genRandom = fn() => new ListItem(
+            $faker->randomNumber(),
+            $faker->text($faker->numberBetween(10, 150)),
+            '#',
+            new ChannelPill(
+                $faker->word(),
+                Color::fromHex($faker->hexColor()),
+                $faker->word(),
+                Color::fromHex($faker->hexColor()),
+                'fas fa-heart'
+            ),
+            $faker->name(),
+            (new Carbon($faker->dateTimeInInterval('now', '-5 days')->format('d.m.Y H:i')))->diffForHumans(),
+            $faker->boolean(),
+            $faker->numberBetween(0, 100),
+            $faker->boolean()
+        );
+
+        $discussionItems = [
+            new ListItem(
+                $faker->randomNumber(),
+                $faker->text(12),
+                '#',
+                new ChannelPill(
+                    $faker->word(),
+                    Color::fromHex($faker->hexColor()),
+                    $faker->word(),
+                    Color::fromHex($faker->hexColor()),
+                    'fas fa-heart'
+                ),
+                $faker->name(),
+                $faker->dateTime()->format('d.m.Y H:i'),
+                false,
+                $faker->numberBetween(0, 100),
+                true
+            ),
+            new ListItem(
+                $faker->randomNumber(),
+                $faker->text(5),
+                '#',
+                new ChannelPill(
+                    $faker->word(),
+                    Color::fromHex($faker->hexColor()),
+                    $faker->word(),
+                    Color::fromHex($faker->hexColor()),
+                    'fas fa-heart'
+                ),
+                $faker->name(),
+                $faker->dateTime()->format('d.m.Y H:i'),
+                true,
+                $faker->numberBetween(0, 100),
+                false
+            )
+        ];
+
+        for ($i = 0; $i < 10; $i++) {
+            $discussionItems[] = $genRandom();
+        }
+
         return view('main', [
             'sidebar' => $sidebar,
+            'items' => $discussionItems,
         ]);
     }
 }

@@ -11,9 +11,16 @@ class DiscussionListItem extends Component
     #[Locked]
     public ListItem $item;
 
-    public function mount(): void
+    public function mount(
+        ListItem $item
+    ): void
     {
+        $this->item = $item;
+    }
 
+    public function markAsRead(): void
+    {
+        $this->item->isUnread = false;
     }
 
     public function render(): \Illuminate\View\View
