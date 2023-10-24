@@ -1,3 +1,3 @@
 <div>
-    <a href="{{ route('one') }}">One</a>
+    <a href="{{ route('one') }}" wire:navigate>One</a>
 </div>
