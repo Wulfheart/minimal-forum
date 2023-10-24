@@ -64,7 +64,7 @@
                     </div>
                     <form x-cloak x-show="showTextarea">
                         <textarea name="reply-content" rows="7" x-ref="textArea"
-                            class="form-textarea w-full rounded border border-gray-300 text-sm text-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary focus:border-primary"></textarea>
+                            class="form-textarea w-full rounded border border-gray-300 text-sm text-gray-700 focus:border-primary focus:ring-2 focus:ring-inset focus:ring-primary"></textarea>
                         <div class="flex w-full flex-row justify-end pt-3">
                             <div>
                                 <x-button class="bg-primary font-bold text-primary-contrast hover:bg-primary-dark">
