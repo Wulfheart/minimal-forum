@@ -55,7 +55,7 @@
             "tools/php-cs-fixer fix --config .php_cs.php"
         ],
         "blade": [
-            "npx blade-formatter --sort-tailwindcss-classes --write resources/views/**/*.blade.php"
+            "npx blade-formatter --sort-tailwindcss-classes --write resources/{**,*}/*.blade.php"
         ]
     },
     "extra": {

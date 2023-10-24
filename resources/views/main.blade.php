@@ -7,9 +7,9 @@
             <div class="flex-grow">
                 <div class="mb-4 flex w-full flex-row justify-between">
                     <x-pages.main.sort-dropdown title="Neueste">
-                        <x-pages.main.sort-dropdown.item text="Neueste"/>
-                        <x-pages.main.sort-dropdown.item active text="Beliebteste"/>
-                        <x-pages.main.sort-dropdown.item text="Meiste Kommentare"/>
+                        <x-pages.main.sort-dropdown.item text="Neueste" />
+                        <x-pages.main.sort-dropdown.item active text="Beliebteste" />
+                        <x-pages.main.sort-dropdown.item text="Meiste Kommentare" />
                     </x-pages.main.sort-dropdown>
                     <x-button.icon-only><i class="fas fa-check"></i></x-button.icon-only>
                 </div>
@@ -21,7 +21,7 @@
                         <a href="#" class="mr-4">
                             <div>
                                 <img src="https://i.pravatar.cc/150?u=fake@pravatar.com" alt=""
-                                     class="h-9 w-9 rounded-full">
+                                    class="h-9 w-9 rounded-full">
                             </div>
                         </a>
                         <a href="#" class="flex flex-grow flex-row items-baseline justify-between">
@@ -49,15 +49,15 @@
                             </div>
                             <div class="flex flex-row items-center">
                                 <div class="mr-5 text-[10px] leading-3">
-                                        <span>
-                                            <span class="rounded-l bg-red-500 px-1 py-0.5 font-bold text-white">
-                                                <i class="fas fa-check"></i>
-                                                DNW
-                                            </span>
-                                            <span class="rounded-r bg-gray-200 px-1 py-0.5 font-bold text-gray-500">
-                                                Support
-                                            </span>
+                                    <span>
+                                        <span class="rounded-l bg-red-500 px-1 py-0.5 font-bold text-white">
+                                            <i class="fas fa-check"></i>
+                                            DNW
                                         </span>
+                                        <span class="rounded-r bg-gray-200 px-1 py-0.5 font-bold text-gray-500">
+                                            Support
+                                        </span>
+                                    </span>
                                 </div>
                                 <div class="text-muted text-sm">
                                     <i class="fa-regular fa-comment mr-1"></i>
@@ -70,7 +70,7 @@
                         <a href="#" class="mr-4">
                             <div>
                                 <img src="https://i.pravatar.cc/150?u=test@dnw.com" alt=""
-                                     class="h-9 w-9 rounded-full">
+                                    class="h-9 w-9 rounded-full">
                             </div>
                         </a>
                         <a href="#" class="flex flex-grow flex-row items-baseline justify-between">
@@ -98,14 +98,14 @@
                             </div>
                             <div class="flex flex-row items-center">
                                 <div class="mr-5 text-[10px] leading-3">
-                                        <span>
-                                            <span class="rounded-l bg-red-500 px-1 py-0.5 font-bold text-white">
-                                                DNW
-                                            </span>
-                                            <span class="rounded-r bg-gray-200 px-1 py-0.5 font-bold text-gray-500">
-                                                Support
-                                            </span>
+                                    <span>
+                                        <span class="rounded-l bg-red-500 px-1 py-0.5 font-bold text-white">
+                                            DNW
                                         </span>
+                                        <span class="rounded-r bg-gray-200 px-1 py-0.5 font-bold text-gray-500">
+                                            Support
+                                        </span>
+                                    </span>
                                 </div>
                                 <div class="text-heading text-sm font-bold">
                                     <i class="fa-solid fa-comment mr-1"></i>

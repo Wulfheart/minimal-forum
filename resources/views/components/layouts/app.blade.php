@@ -10,9 +10,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="text-gray-900 {{ app()->isLocal() ? 'debug-screens' : '' }}">
-<header></header>
-{{ $slot }}
+<body class="{{ app()->isLocal() ? 'debug-screens' : '' }} text-gray-900">
+    <header></header>
+    {{ $slot }}
 </body>
 
 </html>
