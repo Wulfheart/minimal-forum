@@ -10,17 +10,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body hx-boost="true" class="text-gray-900">
-    <header>
-        <nav>
-            <a href="{{ route('overview') }}">home</a>
-            <a href="/posts">posts</a>
-            <a href="/login">login</a>
-            <a href="/register">register</a>
-
-        </nav>
-    </header>
-    {{ $slot }}
+<body class="text-gray-900 {{ app()->isLocal() ? 'debug-screens' : '' }}">
+<header></header>
+{{ $slot }}
 </body>
 
 </html>

@@ -34,7 +34,7 @@ class OverviewController extends Controller
                 new Item(
                     'Alle Diskussionen',
                     '#',
-                    true,
+                    false,
                     'far fa-comments'
                 ),
                 new Item(
@@ -104,7 +104,7 @@ class OverviewController extends Controller
                     ]
                 ),
             ],
-            false,
+            true,
             false,
             false
         );

@@ -11,8 +11,8 @@ export default {
     theme: {
         extend: {
             colors: {
-                'primary': colors.orange[600],
-                'primary-dark': colors.orange[700],
+                'primary': colors.emerald[600],
+                'primary-dark': colors.emerald[700],
                 'primary-contrast': colors.white,
             },
             boxShadow: {
@@ -23,6 +23,7 @@ export default {
     },
     plugins: [
         require('@tailwindcss/container-queries'),
+        require('tailwindcss-debug-screens'),
     ],
 }
 
