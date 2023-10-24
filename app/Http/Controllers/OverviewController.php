@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Livewire\DiscussionListItem;
-use App\Service\OverviewDataService;
 use App\ViewData\Discussion\ListItem;
 use App\ViewData\Shared\Color;
 use App\ViewData\Structure\Channel;
@@ -124,9 +122,9 @@ class OverviewController extends Controller
             $faker->text($faker->numberBetween(10, 150)),
             '#',
             new ChannelPill(
-                $faker->word(),
+                'enim',
                 Color::fromHex($faker->hexColor()),
-                $faker->word(),
+                'consequatur',
                 Color::fromHex($faker->hexColor()),
                 'fas fa-heart'
             ),
@@ -160,9 +158,9 @@ class OverviewController extends Controller
                 $faker->text(5),
                 '#',
                 new ChannelPill(
-                    $faker->word(),
+                    'sdföjghlksjölkjhsdfg',
                     Color::fromHex($faker->hexColor()),
-                    $faker->word(),
+                    'lksjdfghlksjfdgfh',
                     Color::fromHex($faker->hexColor()),
                     'fas fa-heart'
                 ),

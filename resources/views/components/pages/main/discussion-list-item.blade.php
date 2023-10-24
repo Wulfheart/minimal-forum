@@ -1,3 +1,8 @@
+@props(['item'])
+<?php
+/** @var \App\ViewData\Discussion\ListItem $item */
+?>
+
 <li
     class="{{ $item->isUnread ? 'text-gray-900' : 'text-gray-500' }} -mx-3 flex flex-row items-center rounded px-3 py-3 @container hover:bg-gray-100">
     <a href="#" class="mr-4 hidden flex-shrink-0">
@@ -17,7 +22,7 @@
                             style="background: {{ $item->channelPill->hubColor->hexValue() }}; color: {{ $item->channelPill->hubColor->getContrastColor()->hexValue() }}">
                             {{ $item->channelPill->hubTitle }}
                         </div>
-                        <div class="rounded-r px-1 py-0.5 font-bold"
+                        <div class="whitespace-nowrap rounded-r px-1 py-0.5 font-bold"
                             style="background: {{ $item->channelPill->channelColor->hexValue() }}; color: {{ $item->channelPill->channelColor->getContrastColor()->hexValue() }}">
                             <i class="{{ $item->channelPill->channelIcon }} mr-0.5"></i>
                             {{ $item->channelPill->channelTitle }}
@@ -46,8 +51,12 @@
                     </span>
                 </div>
             </div>
-            <div class="text-sm {{ $item->isUnread ? 'font-bold' : '' }}">
-                <i @class(['fa-comment mr-1', 'fas' => $item->isUnread, 'far' => !$item->isUnread])></i>
+            <div class="{{ $item->isUnread ? 'font-bold' : '' }} text-sm">
+                <i @class([
+                    'fa-comment mr-1',
+                    'fas' => $item->isUnread,
+                    'far' => !$item->isUnread,
+                ])></i>
                 {{ $item->responseCount }}
             </div>
         </div>
