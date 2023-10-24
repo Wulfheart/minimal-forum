@@ -5,7 +5,7 @@
         <div class="flex min-h-12 items-baseline justify-between py-2">
             <div class="flex h-full flex-row items-stretch">
                 <div class="flex items-center">
-                    <button  x-on:click="open = !open" class="mr-4 h-full text-xl md:hidden">
+                    <button x-on:click="open = !open" class="mr-4 h-full text-xl md:hidden">
                         <i class="fas fa-bars block"></i>
                     </button>
 
