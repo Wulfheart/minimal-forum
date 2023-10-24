@@ -10,7 +10,7 @@
         "alpinejs": "^3.13.2",
         "autoprefixer": "^10.4.16",
         "axios": "^1.1.2",
-        "blade-formatter": "^1.38.1",
+        "blade-formatter": "^1.38.5",
         "htmx.org": "^1.9.6",
         "laravel-vite-plugin": "^0.8.0",
         "postcss": "^8.4.31",

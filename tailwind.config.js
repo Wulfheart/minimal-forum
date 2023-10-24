@@ -13,6 +13,7 @@ export default {
             colors: {
                 'primary': colors.orange[600],
                 'primary-dark': colors.orange[700],
+                'primary-contrast': colors.white,
             },
             boxShadow: {
                 'default': '0 2px 6px rgba(0,0,0,0.35)'

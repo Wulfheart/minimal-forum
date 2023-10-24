@@ -13,106 +13,82 @@
 
 <body class="">
 
-    <div class="h-24"></div>
-    <x-container class="@container">
-        <div class="w-full flex @container flex-col @2xl:flex-row">
+    <x-container class="pt-10 @container">
+        <div class="flex w-full flex-col @container @2xl:flex-row">
             <!-- Sidebar -->
-            <div class="mb-12 @2xl:mb-0 @xl:w-52 @2xl:mr-12">
-                <div class="w-full mb-5">
-                    <button
-                        class="bg-primary hover:bg-primary-dark text-white text-sm font-bold py-2 px-5 text-center align-middle rounded truncate w-full">
-                        Diskussion starten
-                    </button>
-                </div>
-                <div class="w-full mb-2.5">
-                    <button
-                        class="bg-gray-200 hover:bg-gray-300 text-gray-600 text-sm  py-2 px-5 text-center align-middle rounded truncate w-full">
-                        <i class="fa-regular fa-eye mr-2"></i>
-                        Beobachten
-                    </button>
-                </div>
-                <ul class="list-none text-sm text-gray-500 mb-4">
-                    <li class="py-2">
-                        <a class="hover:text-primary" href="#">
-                            <i class="fa-regular fa-comments mr-2"></i>
-                            Alle Diskussionen
-                        </a>
-                    </li>
-                    <li class="py-2">
-                        <a class="font-bold text-primary" href="#">
-                            <i class="fa-solid fa-tornado mr-2"></i>
-                            Ausgewählt
-                        </a>
-                    </li>
-                    <li class="py-2">
-                        <a class="hover:text-primary" href="#">
-                            <i class="fa-regular fa-eye mr-2"></i>
-                            Beobachtete Diskussionen
-                        </a>
-                    </li>
+            <div class="mb-12 w-full @2xl:mb-0 @2xl:mr-12 @2xl:w-52">
+                @if ($sidebar->showStartDiscussionButton)
+                    <div class="mb-5 w-full">
+                        <x-button class="w-full bg-primary font-bold text-primary-contrast hover:bg-primary-dark">
+                            Diskussion starten
+                        </x-button>
+                    </div>
+                @endif
+                @if ($sidebar->showFollowButton)
+                    <div class="mb-2.5 w-full">
+                        <x-button class="w-full">
+                            <i class="far fa-eye pr-2"></i>
+                            Beobachten
+                        </x-button>
+                    </div>
+                @endif
+
+                <ul class="mb-4 w-full list-none text-sm text-gray-500">
+                    @foreach ($sidebar->items as $item)
+                        <li class="w-full py-2">
+                            <a class="{{ $item->isActive ? 'font-bold text-primary' : '' }} block hover:text-primary"
+                                href="{{ $item->link }}">
+                                <i class="{{ $item->icon }} mr-2"></i>
+                                {{ $item->title }}
+                            </a>
+                        </li>
+                    @endforeach
+
+
+
                 </ul>
                 <ul class="list-none text-sm text-gray-500">
-                    <h3 class="pt-2 font-bold"><a class="hover:text-primary" href="#">DNW</a></h3>
-                    <li class="py-2">
-                        <a class="hover:text-primary" href="#">
-                            <i class="fa-solid fa-vial mr-2" style="color: #B59E8C"></i>
-                            Alle Diskussionen
-                        </a>
-                    </li>
-                    <li class="py-2">
-                        <a class="hover:text-primary" href="#">
-                            <i class="fa-solid fa-wrench mr-2" style="color: #7c3aed"></i>
-                            Support
-                        </a>
-                    </li>
-                    <h3 class="pt-2 font-bold"><a class="text-primary" href="#">Diplomacy Generell</a></h3>
-                    <li class="py-2">
-                        <a class="hover:text-primary" href="#">
-                            <i class="fa-solid fa-flask mr-2" style="color: #06b6d4"></i>
-                            Taktik
-                        </a>
-                    </li>
-                    <li class="py-2">
-                        <a class="hover:text-primary" href="#">
-                            <i class="fa-solid fa-puzzle-piece mr-2" style="color: #ea580c"></i>
-                            Varianten
-                        </a>
-                    </li>
-                    <h3 class="pt-2 font-bold">Ludomaniac</h3>
-                    <li class="py-2">
-                        <a class="hover:text-primary font-bold" style="color: #e11d48" href="#">
-                            <i class="fa-solid fa-wrench mr-2" style="color: #e11d48"></i>
-                            Active
-                        </a>
-                    </li>
+                    @foreach ($sidebar->hubs as $hub)
+                        <h3 class="pt-2 font-bold"><a class="{{ $hub->isActive ? '' : 'hover:text-primary' }}"
+                                href="{{ $hub->link }}">{{ $hub->title }}</a></h3>
+                        @foreach ($hub->channels as $channel)
+                            <li class="py-2">
+                                <a class="hover:text-primary" href="{{ $channel->link }}">
+                                    <i class="{{ $channel->icon }} mr-2"></i>
+                                    {{ $channel->title }}
+                                </a>
+                            </li>
+                        @endforeach
+                    @endforeach
                 </ul>
             </div>
             <!-- Main -->
             <div class="flex-grow">
-                <div class="w-full flex flex-row justify-between mb-4 bg-[--bg-active]">
+                <div class="mb-4 flex w-full flex-row justify-between">
                     <x-pages.main.sort-dropdown title="Neueste">
                         <x-pages.main.sort-dropdown.item text="Neueste" />
                         <x-pages.main.sort-dropdown.item active text="Beliebteste" />
                         <x-pages.main.sort-dropdown.item text="Meiste Kommentare" />
                     </x-pages.main.sort-dropdown>
-                    <x-button.icon><i class="fas fa-check"></i></x-button.icon>
+                    <x-button.icon-only><i class="fas fa-check"></i></x-button.icon-only>
                 </div>
 
                 <ul class="w-full list-none">
-                    <livewire:discussion-overview></livewire:discussion-overview>
-                    <li class="flex flex-row items-center hover:bg-gray-100 py-3 px-3 rounded -mx-3">
+                    <livewire:discussion-list-item></livewire:discussion-list-item>
+                    <livewire:discussion-list-item></livewire:discussion-list-item>
+                    <li class="-mx-3 flex flex-row items-center rounded px-3 py-3 hover:bg-gray-100">
                         <a href="#" class="mr-4">
                             <div>
                                 <img src="https://i.pravatar.cc/150?u=fake@pravatar.com" alt=""
                                     class="h-9 w-9 rounded-full">
                             </div>
                         </a>
-                        <a href="#" class="flex flex-row flex-grow items-baseline justify-between">
+                        <a href="#" class="flex flex-grow flex-row items-baseline justify-between">
                             <div>
                                 <h2 class="mb-[3px] truncate text-gray-500">
                                     Diplomacy Meisterschaft 2023
                                 </h2>
-                                <div class="text-xs text-gray-400 flex flex-row items-center">
+                                <div class="flex flex-row items-center text-xs text-gray-400">
                                     {{-- <div class="text-[10px] leading-3 mr-1"> --}}
                                     {{--     <span> --}}
                                     {{--         <span class="rounded-l bg-red-500 text-white font-bold py-0.5 px-1 "> --}}
@@ -131,37 +107,37 @@
                                 </div>
                             </div>
                             <div class="flex flex-row items-center">
-                                <div class="text-[10px] leading-3 mr-5">
+                                <div class="mr-5 text-[10px] leading-3">
                                     <span>
-                                        <span class="rounded-l bg-red-500 text-white font-bold py-0.5 px-1 ">
+                                        <span class="rounded-l bg-red-500 px-1 py-0.5 font-bold text-white">
                                             <i class="fas fa-check"></i>
                                             DNW
                                         </span>
-                                        <span class="rounded-r bg-gray-200 py-0.5 px-1 text-gray-500 font-bold">
+                                        <span class="rounded-r bg-gray-200 px-1 py-0.5 font-bold text-gray-500">
                                             Support
                                         </span>
                                     </span>
                                 </div>
-                                <div class="text-sm text-muted">
+                                <div class="text-muted text-sm">
                                     <i class="fa-regular fa-comment mr-1"></i>
                                     56
                                 </div>
                             </div>
                         </a>
                     </li>
-                    <li class="flex flex-row items-center hover:bg-gray-100 py-3 px-3 rounded -mx-3">
+                    <li class="-mx-3 flex flex-row items-center rounded px-3 py-3 hover:bg-gray-100">
                         <a href="#" class="mr-4">
                             <div>
                                 <img src="https://i.pravatar.cc/150?u=test@dnw.com" alt=""
                                     class="h-9 w-9 rounded-full">
                             </div>
                         </a>
-                        <a href="#" class="flex flex-row flex-grow items-baseline justify-between">
+                        <a href="#" class="flex flex-grow flex-row items-baseline justify-between">
                             <div>
-                                <h2 class="mb-[3px] truncate text-heading font-bold">
+                                <h2 class="text-heading mb-[3px] truncate font-bold">
                                     Diplomacy Meisterschaft 2023 - ungelesen
                                 </h2>
-                                <div class="text-xs text-muted-more flex flex-row items-center">
+                                <div class="text-muted-more flex flex-row items-center text-xs">
                                     {{-- <div class="text-[10px] leading-3 mr-1"> --}}
                                     {{--     <span> --}}
                                     {{--         <span class="rounded-l bg-red-500 text-white font-bold py-0.5 px-1 "> --}}
@@ -180,18 +156,17 @@
                                 </div>
                             </div>
                             <div class="flex flex-row items-center">
-                                <div class="text-[10px] leading-3 mr-5">
+                                <div class="mr-5 text-[10px] leading-3">
                                     <span>
-                                        <span class="rounded-l bg-red-500 text-white font-bold py-0.5 px-1 ">
-                                            <i class="fas fa-check"></i>
+                                        <span class="rounded-l bg-red-500 px-1 py-0.5 font-bold text-white">
                                             DNW
                                         </span>
-                                        <span class="rounded-r bg-gray-200 py-0.5 px-1 text-gray-500 font-bold">
+                                        <span class="rounded-r bg-gray-200 px-1 py-0.5 font-bold text-gray-500">
                                             Support
                                         </span>
                                     </span>
                                 </div>
-                                <div class="text-sm text-heading font-bold">
+                                <div class="text-heading text-sm font-bold">
                                     <i class="fa-solid fa-comment mr-1"></i>
                                     56
                                 </div>

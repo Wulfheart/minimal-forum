@@ -1,6 +1,5 @@
 @props([
     'px' => 'px-5',
-    'icon' => null,
 ])
 
 <button

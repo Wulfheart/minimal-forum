@@ -15,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn() => view('main'));
-//Route::get('/', OverviewController::class)->name('overview');
+Route::get('/', OverviewController::class)->name('overview');
 //Route::get('/channel', ChannelController::class)->name('channel');
