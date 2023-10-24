@@ -1,7 +1,7 @@
 <x-layouts.app x-data="{ showTextarea: false }">
     <x-nav></x-nav>
     <div class="w-full bg-[--color-accent]"
-         style="--color-accent: {{ $channel->channelColor->hexValue() }}; --color-contrast: {{ $channel->channelColor->getContrastColor()->hexValue() }}">
+        style="--color-accent: {{ $channel->channelColor->hexValue() }}; --color-contrast: {{ $channel->channelColor->getContrastColor()->hexValue() }}">
         <x-container class="px-4 pb-7 pt-10">
             <div class="w-full text-center">
                 <div class="flex flex-row justify-center space-x-5 text-sm font-semibold">
@@ -26,7 +26,8 @@
     </div>
     <x-container class="border-b py-4 md:hidden">
         <div>
-            <x-button class="mr-2 bg-primary font-bold text-primary-contrast hover:bg-primary-dark" x-on:click="showTextarea = true; $nextTick(() => $refs.textArea.focus())">
+            <x-button class="mr-2 bg-primary font-bold text-primary-contrast hover:bg-primary-dark"
+                x-on:click="showTextarea = true; $nextTick(() => $refs.textArea.focus())">
                 Antworten
             </x-button>
             <x-button>
@@ -57,14 +58,13 @@
                 <div class="w-full py-5" id="reply">
                     <div class="w-full rounded border-2 border-dashed border-gray-300" x-show="! showTextarea">
                         <button class="w-full p-5 text-left text-gray-500"
-                                x-on:click="showTextarea = true; $nextTick(() => $refs.textArea.focus())">
+                            x-on:click="showTextarea = true; $nextTick(() => $refs.textArea.focus())">
                             Antwort verfassen
                         </button>
                     </div>
-                    <form x-cloak
-                          x-show="showTextarea">
+                    <form x-cloak x-show="showTextarea">
                         <textarea name="reply-content" rows="7" x-ref="textArea"
-                                  class="form-textarea w-full rounded border border-gray-300 text-sm text-gray-700 focus:border-primary"></textarea>
+                            class="form-textarea w-full rounded border border-gray-300 text-sm text-gray-700 focus:border-primary"></textarea>
                         <div class="flex w-full flex-row justify-end pt-3">
                             <div>
                                 <x-button class="bg-primary font-bold text-primary-contrast hover:bg-primary-dark">
@@ -77,9 +77,8 @@
                 </div>
             </div>
             <div class="ml-4 hidden py-5 md:block">
-                <x-button
-                          x-on:click="showTextarea = true; $nextTick(() => $refs.textArea.focus())"
-                          class="mr-2 w-full bg-primary font-bold text-primary-contrast hover:bg-primary-dark">
+                <x-button x-on:click="showTextarea = true; $nextTick(() => $refs.textArea.focus())"
+                    class="mr-2 w-full bg-primary font-bold text-primary-contrast hover:bg-primary-dark">
                     Antworten
                 </x-button>
                 <x-button class="mt-4 w-full">
