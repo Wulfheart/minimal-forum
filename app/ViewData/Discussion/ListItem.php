@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\ViewData\Discussion;
 
-use App\ViewData\Structure\ChannelPill;
+use App\ViewData\Structure\ChannelDisplayData;
 use Livewire\Wireable;
 
 final class ListItem implements Wireable
@@ -13,7 +13,7 @@ final class ListItem implements Wireable
         public int $id,
         public string $title,
         public string $link,
-        public ChannelPill $channelPill,
+        public ChannelDisplayData $channelPill,
         public string $lastAuthor,
         public string $lastPostedAt,
         public bool $lastPostIsResponse,
@@ -46,7 +46,7 @@ final class ListItem implements Wireable
             $value['id'],
             $value['title'],
             $value['link'],
-            ChannelPill::fromLivewire($value['channelPill']),
+            ChannelDisplayData::fromLivewire($value['channelPill']),
             $value['lastAuthor'],
             $value['lastPostedAt'],
             $value['lastPostIsResponse'],

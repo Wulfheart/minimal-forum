@@ -24,8 +24,10 @@
                 Abmelden
             </div>
         </div>
-        <div class="pt-2 md:hidden" x-cloak x-show="open" x-on:click.away="open = false">
-            {{ $sidebar }}
-        </div>
+        @isset($sidebar)
+            <div class="pt-2 md:hidden" x-cloak x-show="open" x-on:click.away="open = false">
+                {{ $sidebar }}
+            </div>
+        @endisset
     </x-container>
 </header>

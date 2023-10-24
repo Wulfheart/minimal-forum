@@ -7,7 +7,7 @@ namespace App\ViewData\Structure;
 use App\ViewData\Shared\Color;
 use Livewire\Wireable;
 
-final class ChannelPill implements Wireable
+final class ChannelDisplayData implements Wireable
 {
     public function __construct(
         public string $hubTitle,
@@ -31,7 +31,7 @@ final class ChannelPill implements Wireable
         ];
     }
 
-    public static function fromLivewire(mixed $value): ChannelPill
+    public static function fromLivewire(mixed $value): ChannelDisplayData
     {
         return new self(
             $value['hubTitle'],

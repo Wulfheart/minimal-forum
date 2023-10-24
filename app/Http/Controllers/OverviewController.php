@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\ViewData\Discussion\ListItem;
 use App\ViewData\Shared\Color;
 use App\ViewData\Structure\Channel;
-use App\ViewData\Structure\ChannelPill;
+use App\ViewData\Structure\ChannelDisplayData;
 use App\ViewData\Structure\Hub;
 use App\ViewData\Structure\Item;
 use App\ViewData\Structure\Navigation;
@@ -121,7 +121,7 @@ class OverviewController extends Controller
             $faker->randomNumber(),
             $faker->text($faker->numberBetween(10, 150)),
             '#',
-            new ChannelPill(
+            new ChannelDisplayData(
                 'enim',
                 Color::fromHex($faker->hexColor()),
                 'consequatur',
@@ -140,7 +140,7 @@ class OverviewController extends Controller
                 $faker->randomNumber(),
                 $faker->text(12),
                 '#',
-                new ChannelPill(
+                new ChannelDisplayData(
                     $faker->word(),
                     Color::fromHex($faker->hexColor()),
                     $faker->word(),
@@ -157,7 +157,7 @@ class OverviewController extends Controller
                 $faker->randomNumber(),
                 $faker->text(5),
                 '#',
-                new ChannelPill(
+                new ChannelDisplayData(
                     'sdföjghlksjölkjhsdfg',
                     Color::fromHex($faker->hexColor()),
                     'lksjdfghlksjfdgfh',
