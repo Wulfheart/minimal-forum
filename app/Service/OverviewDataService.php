@@ -4,62 +4,41 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Models\Hub;
+use App\Models\Topic;
 use App\Models\User;
-use App\ViewData\Overview\Channel as ChannelViewData;
-use App\ViewData\Overview\Hub as HubViewData;
-use App\ViewData\Overview\OverviewViewData;
-use App\ViewData\Overview\PostPreview;
-use App\ViewData\Shared\Author;
+use App\ViewData\Discussion\ListItem;
+use App\ViewData\Shared\Color;
+use App\ViewData\Structure\ChannelDisplayData;
 
 final class OverviewDataService
 {
-    public function getOverviewDataForUser(User $user): OverviewViewData
+    /**
+     * @return array<ListItem>
+     */
+    public function getAllDiscussionsForUser(User $user, int $page, int $numPerPage): array
     {
-        $hubs = Hub::with(['channels.latestPost' => [
-            'user',
-            'topic',
-        ]])->withCount('channels.topics', 'channels.posts')->get();
+        $query = Topic::with('latestPost.user', 'channel.hub')->withCount('posts');
 
-        $hubViewData = [];
+        $paginated = $query->paginate($numPerPage, page: $page);
 
-        foreach ($hubs as $hub) {
+        $paginated->map(fn(Topic $topic) => new ListItem(
+            $topic->id,
+            $topic->title->string(),
+            '#',
+           new ChannelDisplayData(
+               $topic->channel->hub->name->string(),
+               Color::fromHex($topic->channel->hub->color),
+                $topic->channel->name->string(),
+               Color::fromHex($topic->channel->color),
+               $topic->channel->icon,
+           ),
+            $topic->latestPost->user->name,
+            $topic->latestPost->posted_at->diffForHumans(),
+            $topic->posts_count > 1,
+            $topic->posts_count,
+            false
+        ));
 
-            $channels = $hub->channels->map(function ($channel) {
-                $postPreview = new PostPreview(
-                    route('overview'),
-                    $channel->latestPost->topic->title->string(),
-                    new Author(
-                        $channel->latestPost->user->name,
-                        ''
-                    ),
-                    $channel->latestPost->posted_at->format('Y-m-d'),
-                );
-                return new ChannelViewData(
-                    (string) $channel->name,
-                    $channel->description?->value(),
-                    route('channel', $channel->id),
-                    $postPreview,
-                    $channel->topics_count,
-                    $channel->posts_count,
-                );
-            })->toArray();
-
-            $hubViewData[] = new HubViewData(
-                (string) $hub->name,
-                $hub->description?->value(),
-                $channels,
-            );
-
-        }
-
-        return new OverviewViewData('Diplomacy Network Forum', $hubViewData);
-
+        return [];
     }
-
-    public function getOverviewDataForGuest(): OverviewViewData
-    {
-
-    }
-
 }

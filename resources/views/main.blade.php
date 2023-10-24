@@ -3,7 +3,7 @@
         <x-slot:sidebar><x-sidebar :sidebar="$sidebar" suppress-follow-button
                 suppress-start-discussion-button></x-sidebar></x-slot:sidebar>
     </x-nav>
-    <x-container class="pt-2">
+    <x-container class="pt-7">
         <div class="flex w-full flex-col md:flex-row">
             <!-- Sidebar -->
             <x-sidebar :sidebar="$sidebar" class="hidden md:block"></x-sidebar>

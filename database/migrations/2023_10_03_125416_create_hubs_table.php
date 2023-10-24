@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('order');
-            $table->string('description')->nullable();
+            $table->string('color');
             $table->timestamps();
 
             $table->unique('order');

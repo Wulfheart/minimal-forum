@@ -13,6 +13,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Event;
 
+/**
+ * @property-read Channel $channel
+ * @property-read Post $latestPost
+ */
 class Topic extends Model
 {
     use HasFactory;

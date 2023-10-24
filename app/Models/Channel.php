@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Event;
 
 /**
  * @property-read Post $latestPost
+ * @property-read Hub $hub
  */
 class Channel extends Model
 {
