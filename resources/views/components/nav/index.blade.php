@@ -24,10 +24,26 @@
                 Abmelden
             </div>
         </div>
-        @isset($sidebar)
-            <div class="pt-2 md:hidden" x-cloak x-show="open" x-on:click.away="open = false">
+        <div class="pt-2 md:hidden" x-cloak x-show="open" x-on:click.away="open = false">
+            <ul class="w-full list-none text-sm text-gray-500 mb-4">
+                    <li class="w-full lg:py-2">
+                        <a class="block py-3 hover:text-primary lg:py-0"
+                           href="#">
+                            <i class="fas fa-house mr-2"></i>
+                            Hauptseite
+                        </a>
+                    </li>
+                    <li class="w-full lg:py-2">
+                        <a class="block py-3 hover:text-primary lg:py-0"
+                           href="#">
+                            <i class="fas fa-moon mr-4"></i>
+                            Abmelden
+                        </a>
+                    </li>
+            </ul>
+            @isset($sidebar)
                 {{ $sidebar }}
-            </div>
-        @endisset
+            @endisset
+        </div>
     </x-container>
 </header>
